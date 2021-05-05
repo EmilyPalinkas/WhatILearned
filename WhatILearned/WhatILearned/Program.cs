@@ -35,66 +35,87 @@ namespace WhatILearned
                 Kegs.Add(B);
             }
 
-            Console.WriteLine("Do you want an alcoholic beer? (yes or no)>>");
-            string answer = Console.ReadLine().ToLower();
-            if (answer[0] == 'n')
+            string response = "";
+            do
             {
-                Console.WriteLine("Try this non-alcoholic beer!");
-                Console.WriteLine(Kegs[5]);
-                return;
-            }
-            else
-            {
-                Console.WriteLine("Party on dude");
-            }
-            Console.WriteLine("Would you prefer a low calorie beer? (yes or no)>>");
-            answer = Console.ReadLine().ToLower();
-            if (answer[0] == 'y')
-            {
-                Console.WriteLine("Try these low-cal beers!");
-                foreach (Beer beer in Kegs)
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Do you want an alcoholic beer? (yes or no)>>");
+                string answer = Console.ReadLine().ToLower();
+                Console.ForegroundColor = ConsoleColor.Green;
+                if (answer[0] == 'n')
                 {
-                    if (beer.Calories <= 100)
+                    Console.WriteLine("Try this non-alcoholic beer!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(Kegs[5]);
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("Hell yeah brother!:)");
+                }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Would you prefer a low calorie beer? (yes or no)>>");
+                answer = Console.ReadLine().ToLower();
+                Console.ForegroundColor = ConsoleColor.Green;
+                if (answer[0] == 'y')
+                {
+                    Console.WriteLine("Try these low-cal beers!");
+                    foreach (Beer beer in Kegs)
                     {
-                        Console.WriteLine(beer.ToString());
+                        if (beer.Calories <= 100)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(beer.ToString());
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("These beers are over 100 calories:");
-                foreach (Beer beer in Kegs)
+                else
                 {
-                    if (beer.Calories > 100)
+                    Console.WriteLine("These beers are over 100 calories:");
+                    foreach (Beer beer in Kegs)
                     {
-                        Console.WriteLine(beer.ToString());
+                        if (beer.Calories > 100)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(beer.ToString());
+                        }
                     }
                 }
-            }
-            Console.WriteLine("Are you allergic to any citrus fruit? (yes or no)>>");
-            answer = Console.ReadLine().ToLower();
-            if (answer[0] == 'y')
-            {
-                Console.WriteLine("You can drink these beers!");
-                foreach (Beer beer in Kegs)
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Are you allergic to any citrus fruit? (yes or no)>>");
+                answer = Console.ReadLine().ToLower();
+                Console.ForegroundColor = ConsoleColor.Green;
+                if (answer[0] == 'y')
                 {
-                    if (beer.IsThereCitrus() == false)
+                    Console.WriteLine("You can drink these beers!");
+                    foreach (Beer beer in Kegs)
                     {
-                        Console.WriteLine(beer.ToString());
+                        if (beer.IsThereCitrus() == false)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(beer.ToString());
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("You should try these beers!");
-                foreach (Beer beer in Kegs)
+                else
                 {
-                    if (beer.IsThereCitrus() == true)
+                    Console.WriteLine("You should try these beers!");
+                    foreach (Beer beer in Kegs)
                     {
-                        Console.WriteLine(beer.ToString());
+                        if (beer.IsThereCitrus() == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(beer.ToString());
+                        }
                     }
                 }
-            }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Do you want to go again? (yes or no)>>");
+                response = Console.ReadLine().ToLower();
+
+            } while (response[0] == 'y');
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Cheers! Bye");
         }
     }
 }
